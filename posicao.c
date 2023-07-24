@@ -15,44 +15,43 @@ void PrintPosicao(Posicao pos){
 	printf("\n");
 }
 
-int VerificarVitoria(Posicao p){
+int VerificarVitoria(Posicao p,char simbolo_primeiro_jogador, char simbolo_segundo_jogador){
 	for(int i=0;i<=6;i=i+=3){
-		if (p.tabuleiro[i]=='X' && p.tabuleiro[i+1]=='X' && p.tabuleiro[i+2]=='X'){
+		if (p.tabuleiro[i]==simbolo_segundo_jogador && p.tabuleiro[i+1]==simbolo_segundo_jogador && p.tabuleiro[i+2]==simbolo_segundo_jogador){
 			return -1;
 		}
-		if (p.tabuleiro[i]=='O' && p.tabuleiro[i+1]=='O' && p.tabuleiro[i+2]=='O'){
+		if (p.tabuleiro[i]==simbolo_primeiro_jogador && p.tabuleiro[i+1]==simbolo_primeiro_jogador && p.tabuleiro[i+2]==simbolo_primeiro_jogador){
 			return 1;
 		}
 	}
 
 	for(int i=0;i<=2;i++){
-		if (p.tabuleiro[i]=='X' && p.tabuleiro[i+3]=='X' && p.tabuleiro[i+6]=='X'){
+		if (p.tabuleiro[i]==simbolo_segundo_jogador && p.tabuleiro[i+3]==simbolo_segundo_jogador && p.tabuleiro[i+6]==simbolo_segundo_jogador){
 			return -1;
 		}
-		if (p.tabuleiro[i]=='O' && p.tabuleiro[i+3]=='O' && p.tabuleiro[i+6]=='O'){
+		if (p.tabuleiro[i]==simbolo_primeiro_jogador && p.tabuleiro[i+3]==simbolo_primeiro_jogador && p.tabuleiro[i+6]==simbolo_primeiro_jogador){
 			return 1;
 		}
 	}
 
-	if(p.tabuleiro[0]=='X' && p.tabuleiro[4]=='X' && p.tabuleiro[8]=='X'){
+	if(p.tabuleiro[0]==simbolo_segundo_jogador && p.tabuleiro[4]==simbolo_segundo_jogador && p.tabuleiro[8]==simbolo_segundo_jogador){
 		return -1;
 	}
 
-	if(p.tabuleiro[0]=='O' && p.tabuleiro[4]=='O' && p.tabuleiro[8]=='O'){
+	if(p.tabuleiro[0]==simbolo_primeiro_jogador && p.tabuleiro[4]==simbolo_primeiro_jogador && p.tabuleiro[8]==simbolo_primeiro_jogador){
 		return 1;
 	}
 
-	if(p.tabuleiro[2]=='X' && p.tabuleiro[4]=='X' && p.tabuleiro[6]=='X'){
+	if(p.tabuleiro[2]==simbolo_segundo_jogador && p.tabuleiro[4]==simbolo_segundo_jogador && p.tabuleiro[6]==simbolo_segundo_jogador){
 		return -1;
 	}
 
-	if(p.tabuleiro[2]=='O' && p.tabuleiro[4]=='O' && p.tabuleiro[6]=='O'){
-		return -1;
+	if(p.tabuleiro[2]==simbolo_primeiro_jogador && p.tabuleiro[4]==simbolo_primeiro_jogador && p.tabuleiro[6]==simbolo_primeiro_jogador){
+		return 1;
 	}
 
 	return 0;
 }
-
 
 int ContarEspacosVazios(Posicao pos){
     int cont=0;

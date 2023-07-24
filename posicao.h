@@ -8,5 +8,5 @@ typedef struct {
 
 int ContarEspacosVazios(Posicao pos);
 void PrintPosicao(Posicao pos);
-int VerificarVitoria(Posicao p);
+int VerificarVitoria(Posicao p,char simbolo_primeiro_jogador, char simbolo_segundo_jogador);
 #endif

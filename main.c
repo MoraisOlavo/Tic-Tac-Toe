@@ -23,7 +23,6 @@ void main(){
 
 	printf("Digite qual será o símbolo do primeiro jogador\n");
 	scanf(" %c",&simbolo_primeiro_jogador);
-	printf("Char lido: %c\n",simbolo_primeiro_jogador);
 	fflush(stdin);
 
 	printf("Digite qual será o símbolo do segundo jogador\n");
@@ -39,7 +38,7 @@ void main(){
 	}
 	fflush(stdin);
 
-	while(VerificarVitoria(pos_atual)==0){       
+	while(VerificarVitoria(pos_atual,simbolo_primeiro_jogador,simbolo_segundo_jogador)==0){       
 		if(pos_atual.vez==1){
 			PrintPosicao(pos_atual);
 			do{
@@ -63,9 +62,9 @@ void main(){
 		pos_atual.vez*=-1;
 	}
 
-	if(VerificarVitoria(pos_atual)==1){
-		printf("O venceu\n");
+	if(VerificarVitoria(pos_atual,simbolo_primeiro_jogador,simbolo_segundo_jogador)==1){
+		printf("%c venceu\n",simbolo_primeiro_jogador);
 	}else{
-		printf("X venceu\n");
+		printf("%c venceu\n",simbolo_segundo_jogador);
 	}
 }
