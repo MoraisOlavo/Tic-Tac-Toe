@@ -15,7 +15,6 @@ void main(){
 	for(int i=0;i<9;i++){
 		pos_atual.tabuleiro[i]=' ';
 	}
-	pos_atual.vez=1;
 	pos_atual.valor=0;
 
 	char simbolo_primeiro_jogador;
@@ -31,10 +30,17 @@ void main(){
 	scanf(" %c",&simbolo_segundo_jogador);
 	fflush(stdin);
 
+	printf("Digite 1 para começar jogando, qulquer outra coisa caso contrário\n");
+	scanf("%d",&aux);
+	if(aux==1){
+		pos_atual.vez=1;
+	}else{
+		pos_atual.vez=-1;
+	}
+	fflush(stdin);
 
 	while(VerificarVitoria(pos_atual)==0){       
 		if(pos_atual.vez==1){
-			printf("bolsonaro a\n");
 			PrintPosicao(pos_atual);
 			do{
 				scanf("%d",&aux);
