@@ -15,7 +15,7 @@ void PrintPosicao(Posicao pos){
 	printf("\n");
 }
 
-int VerificarVitoria(Posicao p,char simbolo_primeiro_jogador, char simbolo_segundo_jogador){
+int VerificarVitoria(Posicao p, char simbolo_primeiro_jogador, char simbolo_segundo_jogador){
 	for(int i=0;i<=6;i=i+=3){
 		if (p.tabuleiro[i]==simbolo_segundo_jogador && p.tabuleiro[i+1]==simbolo_segundo_jogador && p.tabuleiro[i+2]==simbolo_segundo_jogador){
 			return -1;

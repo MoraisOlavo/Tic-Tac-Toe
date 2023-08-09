@@ -4,6 +4,7 @@
 typedef struct{
     Posicao pos;
     int n_filhos;
+    int ultimo_mov;
     void** vetor_filhos;
 } No;
 
