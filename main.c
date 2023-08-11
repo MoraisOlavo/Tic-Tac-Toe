@@ -13,13 +13,17 @@
 int CalcularJogada(Posicao pos_atual){
 	No* arvore=CriarArvore(pos_atual,-1);
 	int menor=0;
+	printf("Filho 0: %d \n",arvore->vetor_filhos[0]->valor);
 	for(int i=1;i<arvore->n_filhos;i++){
+		printf("Filho %d: %d\n",i,arvore->vetor_filhos[i]->valor); 
 		if(arvore->vetor_filhos[i]->valor<arvore->vetor_filhos[menor]->valor){
 			menor=i;
 		}
 	}
 
+	printf("filho com menor valor:%d\n",menor);
 	int retorno=arvore->vetor_filhos[menor]->ultimo_mov;
+	printf("Valor encontrado:%d\n",retorno);
 	DeletarArvore(arvore);
 	return retorno;
 }
