@@ -1,13 +1,27 @@
 #include <stdio.h>
 #include "no.h"
 
+// int CalcularJogada(Posicao pos_atual){
+// 	for(int i=0;i<9;i++){
+// 		if(pos_atual.tabuleiro[i]==' '){
+// 			return i;
+// 		}
+// 	}
+// 	return 0;
+// }
+
 int CalcularJogada(Posicao pos_atual){
-	for(int i=0;i<9;i++){
-		if(pos_atual.tabuleiro[i]==' '){
-			return i;
+	No* arvore=CriarArvore(pos_atual,-1);
+	int menor=0;
+	for(int i=1;i<arvore->n_filhos;i++){
+		if(arvore->vetor_filhos[i]->valor<arvore->vetor_filhos[menor]->valor){
+			menor=i;
 		}
 	}
-	return 0;
+
+	int retorno=arvore->vetor_filhos[menor]->ultimo_mov;
+	DeletarArvore(arvore);
+	return retorno;
 }
 
 void main(){
@@ -17,16 +31,14 @@ void main(){
 	}
 	pos_atual.valor=0;
 
-	char simbolo_primeiro_jogador;
-	char simbolo_segundo_jogador;
 	int aux;
 
 	printf("Digite qual será o símbolo do primeiro jogador\n");
-	scanf(" %c",&simbolo_primeiro_jogador);
+	scanf(" %c",&pos_atual.simbolo_primeiro_jogador);
 	fflush(stdin);
 
 	printf("Digite qual será o símbolo do segundo jogador\n");
-	scanf(" %c",&simbolo_segundo_jogador);
+	scanf(" %c",&pos_atual.simbolo_segundo_jogador);
 	fflush(stdin);
 
 	printf("Digite 1 para começar jogando, qulquer outra coisa caso contrário\n");
@@ -38,7 +50,7 @@ void main(){
 	}
 	fflush(stdin);
 
-	while(VerificarVitoria(pos_atual,simbolo_primeiro_jogador,simbolo_segundo_jogador)==0){       
+	while(VerificarVitoria(pos_atual)==0){       
 		if(pos_atual.vez==1){
 			PrintPosicao(pos_atual);
 			do{
@@ -54,17 +66,17 @@ void main(){
 		}
 
 		if(pos_atual.vez==1){
-			pos_atual.tabuleiro[aux]=simbolo_primeiro_jogador;
+			pos_atual.tabuleiro[aux]=pos_atual.simbolo_primeiro_jogador;
 		}else{
-			pos_atual.tabuleiro[aux]=simbolo_segundo_jogador;
+			pos_atual.tabuleiro[aux]=pos_atual.simbolo_segundo_jogador;
 		}
 
 		pos_atual.vez*=-1;
 	}
 
-	if(VerificarVitoria(pos_atual,simbolo_primeiro_jogador,simbolo_segundo_jogador)==1){
-		printf("%c venceu\n",simbolo_primeiro_jogador);
+	if(VerificarVitoria(pos_atual)==1){
+		printf("%c venceu\n",pos_atual.simbolo_primeiro_jogador);
 	}else{
-		printf("%c venceu\n",simbolo_segundo_jogador);
+		printf("%c venceu\n",pos_atual.simbolo_segundo_jogador);
 	}
 }
